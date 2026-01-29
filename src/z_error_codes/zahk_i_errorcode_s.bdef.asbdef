@@ -1,0 +1,110 @@
+managed implementation in class ZBP_AHK_I_ERRORCODE_S unique;
+strict;
+with draft;
+define behavior for ZAHK_I_ErrorCode_S alias ErrorCodeAll
+draft table ZAHKERRCODE_D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+{
+  field ( readonly )
+   SingletonID;
+
+  field ( notrigger )
+   SingletonID,
+   LastChangedAtMax;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  association _ErrorCode { create ( features : instance ); with draft; }
+
+}
+
+define behavior for ZAHK_I_ErrorCode alias ErrorCode ##UNMAPPED_FIELD
+persistent table ZAHKERRCODE
+draft table ZAHKERRCODE_D
+etag master LocalLastChangedAt
+lock dependent by _ErrorCodeAll
+authorization dependent by _ErrorCodeAll
+{
+  field ( mandatory : create )
+   ErrorCode;
+
+  field ( readonly )
+   SingletonID,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   ErrorCode;
+
+  field ( notrigger )
+   SingletonID,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+
+  update( features : global );
+  delete( features : global );
+
+  factory action ( features : instance ) Copy parameter ZD_CopyErrorCodeP [1];
+
+  mapping for ZAHKERRCODE
+  {
+    ErrorCode = ERROR_CODE;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _ErrorCodeAll { with draft; }
+  association _ErrorCodeText { create ( features : global ); with draft; }
+
+}
+
+define behavior for ZAHK_I_ErrorCodeText alias ErrorCodeText ##UNMAPPED_FIELD
+persistent table ZAHKERRCODE_T
+draft table ZAHKERRCODE_T_D
+etag master LocalLastChangedAt
+lock dependent by _ErrorCodeAll
+authorization dependent by _ErrorCodeAll
+{
+  field ( mandatory : create )
+   Langu;
+
+  field ( readonly )
+   SingletonID,
+   ErrorCode,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   Langu;
+
+  field ( notrigger )
+   SingletonID,
+   LocalLastChangedAt;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZAHKERRCODE_T
+  {
+    Langu = LANGU;
+    ErrorCode = ERROR_CODE;
+    Description = DESCRIPTION;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _ErrorCodeAll { with draft; }
+  association _ErrorCode { with draft; }
+
+}

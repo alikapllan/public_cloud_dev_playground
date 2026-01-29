@@ -1,0 +1,47 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Maintain Error Code",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "ZAHK_UI_ERRORCODE_O4",
+    "serviceName": "ZAHK_UI_ERRORCODE_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "ErrorCodeAll",
+    "name": "Error Code",
+    "configurationGroup": "",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "ErrorCodeAll",
+        "variantManagement": "control"
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "ErrorCode",
+        "tableType": "gridTable",
+        "selectionMode": "single",
+        "selectAll": true,
+        "rowCountMode": "auto",
+        "frozenColumnCount": 1,
+        "creationModeName": "inlineCreationRows",
+        "createAtEnd": true,
+        "widthIncludingColumnHeader": true
+      },
+      {
+        "entitySet": "ErrorCodeText",
+        "tableType": "gridTable",
+        "selectAll": true,
+        "creationModeName": "inlineCreationRows",
+        "createAtEnd": true,
+        "widthIncludingColumnHeader": true
+      }
+    ]
+  }
+}

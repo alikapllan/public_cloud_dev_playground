@@ -1,0 +1,5 @@
+@MappingRole: true
+define role ZAHK_I_ErrorCodeText {
+  grant select on ZAHK_I_ErrorCodeText
+  where INHERITING CONDITIONS FROM ENTITY ZAHK_I_ErrorCode;
+}

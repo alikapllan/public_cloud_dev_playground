@@ -1,0 +1,6 @@
+@ObjectModel.leadingEntity.name: 'ZAHK_C_ErrorCode_S'
+define service ZAHK_UI_ERRORCODE {
+  expose ZAHK_C_ERRORCODE_S as ErrorCodeAll;
+  expose ZAHK_C_ERRORCODE as ErrorCode;
+  expose ZAHK_C_ERRORCODETEXT as ErrorCodeText;
+}

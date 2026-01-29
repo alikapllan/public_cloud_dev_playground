@@ -1,0 +1,39 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'ErrorCodeText', 
+    typeNamePlural: 'ErrorCodeTexts', 
+    title: {
+      type: #STANDARD, 
+      label: 'Error Code Text', 
+      value: 'Langu'
+    }
+  }
+}
+annotate view ZAHK_C_ErrorCodeText with
+{
+  @UI.facet: [ {
+    id: 'ZAHK_I_ErrorCodeText', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Error Code Text', 
+    position: 1 
+  } ]
+  @UI.identification: [ {
+    position: 1 , 
+    label: 'Langu'
+  } ]
+  @UI.lineItem: [ {
+    position: 1 , 
+    label: 'Langu'
+  } ]
+  Langu;
+  
+  @UI.identification: [ {
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  Description;
+}

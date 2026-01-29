@@ -1,0 +1,51 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'ErrorCode', 
+    typeNamePlural: 'ErrorCodes', 
+    title: {
+      type: #STANDARD, 
+      label: 'Error Code', 
+      value: 'ErrorCode'
+    }
+  }
+}
+annotate view ZAHK_C_ErrorCode with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  }, 
+  {
+    type: #FOR_ACTION, 
+    dataAction: 'Copy', 
+    label: 'Copy Selected Entry', 
+    invocationGrouping: #CHANGE_SET
+  } ]
+  @UI.facet: [ {
+    id: 'ZAHK_I_ErrorCode', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Error Code', 
+    position: 1 
+  }, 
+  {
+    id: 'ZAHK_I_ErrorCodeText', 
+    type: #LINEITEM_REFERENCE, 
+    label: 'Error Code Text', 
+    position: 2 , 
+    targetElement: '_ErrorCodeText'
+  } ]
+  ErrorCode;
+  
+  @UI.identification: [ {
+    hidden: true, 
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  Description;
+}

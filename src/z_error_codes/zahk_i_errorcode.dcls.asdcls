@@ -1,0 +1,5 @@
+@MappingRole: true
+define role ZAHK_I_ErrorCode {
+  grant select on ZAHK_I_ErrorCode
+  where ( ) = ASPECT pfcg_auth ( 'S_TABU_NAM', ACTVT = '03', TABLE = 'ZAHK_I_ERRORCODE' );
+}
